@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ff5f800afa83595a52cf650375185378",
+    "revision": "34dc1abb87b60649b0067b9fb06a7e32",
     "url": "/itigen_frontend/index.html"
   },
   {
-    "revision": "7c9290cb003aee112057",
+    "revision": "8fff81b91aaeb5a2d15f",
     "url": "/itigen_frontend/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/itigen_frontend/static/js/2.4c732875.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7c9290cb003aee112057",
-    "url": "/itigen_frontend/static/js/main.29f755d2.chunk.js"
+    "revision": "8fff81b91aaeb5a2d15f",
+    "url": "/itigen_frontend/static/js/main.b7bf6142.chunk.js"
   },
   {
     "revision": "cb2ced3676afb6e2d276",
