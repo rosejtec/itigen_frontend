@@ -22,11 +22,10 @@ class App extends Component {
 		  <header className="App-header">
 		  
 			<Navbar />
-
 			<div className="container">
-			  <Route exact path={process.env.PUBLIC_URL + '/generator'} component={Generator}/>
-			  <Route exact path={process.env.PUBLIC_URL + '/itinerary'} component={Itinerary} />
-	          <Route exact path={process.env.PUBLIC_URL + '/'} component={Landing} />
+			  <Route exact path="/generator" component={Generator}/>
+			  <Route exact path="/itinerary" component={Itinerary} />
+	          <Route exact path="/landing" component={Landing} />
 
 			  <div className="App">
 		  <ParticlesBg type="circle" bg={true} />
