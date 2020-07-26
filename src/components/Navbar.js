@@ -93,7 +93,7 @@ class Landing extends Component {
 
           <Link variant="button" color="textPrimary" href="/landing" className={classes.link}>
                 Home
-              </Link>
+          </Link>
           <Link variant="button" color="textPrimary" href="/generator" className={classes.link}>
             Generator
           </Link>
