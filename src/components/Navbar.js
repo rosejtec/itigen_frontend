@@ -91,13 +91,13 @@ class Landing extends Component {
           </Typography>
 
 
-          <Link variant="button" color="textPrimary" href="/landing" className={classes.link}>
+          <Link variant="button" color="textPrimary" href="process.env.PUBLIC_URL + /landing" className={classes.link}>
                 Home
           </Link>
-          <Link variant="button" color="textPrimary" href="/generator" className={classes.link}>
+          <Link variant="button" color="textPrimary" href="process.env.PUBLIC_URL + /generator" className={classes.link}>
             Generator
           </Link>
-          <Link variant="button" color="textPrimary" href="/itinerary" className={classes.link}>
+          <Link variant="button" color="textPrimary" href="process.env.PUBLIC_URL + /itinerary" className={classes.link}>
             Itinerary
           </Link>
 
