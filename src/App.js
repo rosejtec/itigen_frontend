@@ -24,9 +24,9 @@ class App extends Component {
 			<Navbar />
 
 			<div className="container">
-			  <Route exact path="process.env.PUBLIC_URL + /generator" component={Generator}/>
-			  <Route exact path="process.env.PUBLIC_URL + /itinerary" component={Itinerary} />
-	          <Route exact path="process.env.PUBLIC_URL + /landing" component={Landing} />
+			  <Route exact path={process.env.PUBLIC_URL + '/generator'} component={Generator}/>
+			  <Route exact path={process.env.PUBLIC_URL + '/itinerary'} component={Itinerary} />
+	          <Route exact path={process.env.PUBLIC_URL + '/'} component={Landing} />
 
 			  <div className="App">
 		  <ParticlesBg type="circle" bg={true} />

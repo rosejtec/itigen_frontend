@@ -91,7 +91,7 @@ class Landing extends Component {
           </Typography>
 
 
-          <Link variant="button" color="textPrimary" href="process.env.PUBLIC_URL + /landing" className={classes.link}>
+          <Link variant="button" color="textPrimary" href="process.env.PUBLIC_URL + /" className={classes.link}>
                 Home
           </Link>
           <Link variant="button" color="textPrimary" href="process.env.PUBLIC_URL + /generator" className={classes.link}>
