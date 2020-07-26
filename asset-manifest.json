@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/itigen_frontend/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/itigen_frontend/static/js/main.29f755d2.chunk.js",
+    "main.js.map": "/itigen_frontend/static/js/main.29f755d2.chunk.js.map",
+    "runtime-main.js": "/itigen_frontend/static/js/runtime-main.3e15ca4b.js",
+    "runtime-main.js.map": "/itigen_frontend/static/js/runtime-main.3e15ca4b.js.map",
+    "static/js/2.4c732875.chunk.js": "/itigen_frontend/static/js/2.4c732875.chunk.js",
+    "static/js/2.4c732875.chunk.js.map": "/itigen_frontend/static/js/2.4c732875.chunk.js.map",
+    "index.html": "/itigen_frontend/index.html",
+    "precache-manifest.5bc3ff685293102fcdd71e83144e4fd5.js": "/itigen_frontend/precache-manifest.5bc3ff685293102fcdd71e83144e4fd5.js",
+    "service-worker.js": "/itigen_frontend/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/itigen_frontend/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.4c732875.chunk.js.LICENSE.txt": "/itigen_frontend/static/js/2.4c732875.chunk.js.LICENSE.txt",
+    "static/media/Midnight.jpg": "/itigen_frontend/static/media/Midnight.80e5b565.jpg",
+    "static/media/circle-cropped.png": "/itigen_frontend/static/media/circle-cropped.a16d1daf.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3e15ca4b.js",
+    "static/js/2.4c732875.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.29f755d2.chunk.js"
+  ]
+}
