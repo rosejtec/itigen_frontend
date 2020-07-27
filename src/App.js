@@ -20,11 +20,17 @@ class App extends Component {
 		  <Route exact path="/">
 		  <Redirect to="/landing" /> 
         </Route>
+
+		<Route exact path="/itigen_frontend">
+		  <Redirect to="/landing" /> 
+        </Route>
+		
 			<Navbar />
 			<div className="container">
+			<Route exact path="/landing" component={Landing} />
+
 			  <Route exact path="/generator" component={Generator}/>
 			  <Route exact path="/itinerary" component={Itinerary} />
-	          <Route exact path="/landing" component={Landing} />
 
 			  <div className="App">
 		  <ParticlesBg type="circle" bg={true} />
