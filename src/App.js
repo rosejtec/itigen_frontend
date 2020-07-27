@@ -16,11 +16,10 @@ class App extends Component {
 			<Router>
 			
 		  <div className="Apps">
-
-		 
-		 
 		  <header className="App-header">
-		  
+		  <Route exact path="/">
+		  <Redirect to="/landing" /> 
+        </Route>
 			<Navbar />
 			<div className="container">
 			  <Route exact path="/generator" component={Generator}/>

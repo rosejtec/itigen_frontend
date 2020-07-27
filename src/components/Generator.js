@@ -145,7 +145,6 @@ class Generator extends Component {
     console.log(this.state.final);
     console.log(this.state.final_address);
     console.log(this.state.place_ids2);
-    this.setState({ flag: true });
     this.setState({ state: this.state });
   }
 //Handles submission of places to go to
@@ -308,7 +307,7 @@ class Generator extends Component {
     console.log(event);
 
     doc.autoTable({
-      head: [['Places (Optimal Order)', 'In Time	', 'Out Time']],
+      head: [['Places (Optimal Order)', 'In Time ', 'Out Time']],
       body: event,
     })
 
@@ -333,6 +332,17 @@ class Generator extends Component {
   // Handles submitting of time
 handleFinalChangeIn(event){
   this.setState({startTrip: this.state.startTrip});
+  var ndate = new Date(this.state.startTrip);
+  var i = ndate.getHours();
+  var j = ndate.getMinutes();
+  var sum = (i*100) + j;
+  var p = parseInt(this.state.place_details[0].opening_hours.periods[0].open.time);//.opening_hours.periods[0].open
+  console.log(p);
+  console.log(sum);
+  if( p> sum){
+    console.log("error");
+    this.setState({flag: true});
+  }
   console.log(this.state.startTrip);
   event.preventDefault();
 }
@@ -462,6 +472,18 @@ getDetailsAsync(request) {
   console.log(this.state.ranks);
   console.log(this.state.place_details);
   }
+  getError = () => {
+    return (
+      <div className="col-md-10 mt-3 mx-auto">
+   <Typography variant="h5" gutterBottom>
+    <Alert severity="error">
+    <AlertTitle>Error</AlertTitle>
+    <strong>${this.state.place_details[0].name} is not open at this time!</strong>
+  </Alert>
+  </Typography>
+   </div>
+    );
+  };
   render() {
     const { classes } = this.props;
 
@@ -472,12 +494,13 @@ getDetailsAsync(request) {
           <div className="col-md-10 mt-5 mx-auto">
             <div className ="col-md-6 mx-auto p-3" style={{ color:"white", fontWeight:"bold", fontSize:20}} >
             <Typical
-        steps={['Customise your itinerary here!', 1000]}
+        steps={['Generate your itinerary here!', 1000]}
         loop={Infinity}
         wrapper="p"
         colour="white"
       />
-      <div className="float-right mt-3">
+       </div>
+      <div className="col-md-6 mx-auto p-3">
             
             <PlacesAutocomplete
               value={this.state.address}
@@ -533,9 +556,28 @@ getDetailsAsync(request) {
             <Button variant="contained" color="primary" style={{backgroundColor:"purple"}} onClick={e => this.handleSubmit(e)}>
              Submit
             </Button>
+
             </div>
-            </div>
-            <table>
+           {/*here*/}
+            <div class="col-md-10 mt-5 ml-5 mx-auto">
+        <TableContainer component={Paper}>
+              <Table style={{borderTop: '3px solid purple'}}stickyHeader aria-label="sticky table">
+                <TableBody>
+                  {this.state.formatted_address.map((x, i, handleRemove) =>
+                    <TableRow key={`tr-${i}`}>
+                      <TableCell component="th" scope="row"> {x}  </TableCell>
+                      <TableCell>
+                        <DeleteIcon onClick={() => this.handleRemove(i)} />
+                      </TableCell>
+                    </TableRow>)}
+                </TableBody>
+              </Table>
+            </TableContainer>
+        </div>
+            <div className="col-md-10 mt-5 mx-auto">
+              {!this.state.submit? null:
+              <div>
+                 <table className="col-md-6 mx-auto p-3"> {/*float-right mt-3*/}
               <thead>
                 <tr>
                   <th>Start Date</th>
@@ -562,24 +604,6 @@ getDetailsAsync(request) {
                     </th>
                   </tr>
             </table>
-            <div class="col-md-10 mt-5 ml-5 mx-auto">
-        <TableContainer component={Paper}>
-              <Table style={{borderTop: '3px solid purple'}}stickyHeader aria-label="sticky table">
-                <TableBody>
-                  {this.state.formatted_address.map((x, i, handleRemove) =>
-                    <TableRow key={`tr-${i}`}>
-                      <TableCell component="th" scope="row"> {x}  </TableCell>
-                      <TableCell>
-                        <DeleteIcon onClick={() => this.handleRemove(i)} />
-                      </TableCell>
-                    </TableRow>)}
-                </TableBody>
-              </Table>
-            </TableContainer>
-        </div>
-            <div className="col-md-10 mt-5 mx-auto">
-              {!this.state.submit? null:
-              <div>
             <TableContainer component={Paper}style={{borderTop: '3px solid black', borderBottom: '3px solid black',
       borderRight: '3px solid black', borderLeft: '3px solid black'}}>
               <Table className={classes.table} aria-label="caption table">
@@ -613,6 +637,8 @@ getDetailsAsync(request) {
               </TableBody>
             </Table>
             </TableContainer>
+            {this.state.flag?     
+             this.getError() : null}
             <Button variant="contained" color="primary"  onClick={this.loadPDF}>Download PDF</Button>
             <Button variant="contained" color="primary" onClick={this.handleClick}>Add to GCalendar 📅</Button>
             </div>

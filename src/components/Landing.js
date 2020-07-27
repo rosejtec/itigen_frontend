@@ -23,7 +23,7 @@ import Rating from '@material-ui/lab/Rating';
 import { WaveTopBottomLoading } from 'react-loadingg';
 import ParticlesBg from 'particles-bg';
 import Typical from 'react-typical';
-
+import Divider from '@material-ui/core/Divider';
 
     const useStyles = theme => ({
         root: {
@@ -148,8 +148,7 @@ calculateDetails= async()=>{
   
     const details_updated = [...details]; //<----here
     const photos_updated = [...pics];
-
-let map = new google.maps.Map(document.createElement('div'));
+    let map = new google.maps.Map(document.createElement('div'));
     this.googlePlaces = new google.maps.places.PlacesService(map);
    /// console.log(this.state.store_result.length);
     //console.log(this.state.store_result);
@@ -202,17 +201,18 @@ handleSubmit(event) {
     <div className="container">
     <div className="row">
 
-      
-    <div className="col-md-6 mt-5 mx-auto">
+    <div className ="col-md-12 mt-3 " style={{ color:"white", fontWeight:"bold", fontSize:20}} >
 
-    <div className ="input" style={{ color:"white", fontWeight:"bold", fontSize:20}} >
+<Typical
+    steps={['Hello welcome to itigen. You can start your travel search by entering any place you want below', 500]}
+    wrapper="p"
+    colour="white"
+  />
 
-    <Typical
-        steps={['Hello welcome to itigen', 1000, 'You can start your travel search by entering any place you want below', 500]}
-        loop={Infinity}
-        wrapper="p"
-        colour="white"
-      />
+ </div>
+    <div className="col-md-6 mt-3 mx-auto">
+
+    <div>
        <PlacesAutocomplete
         value={this.state.address}
         onChange={this.handleChange}
@@ -277,6 +277,9 @@ handleSubmit(event) {
              New Place
           </Button> */}
           </div>
+
+          <Divider variant="middle" />
+
  {this.state.loading? (<WaveTopBottomLoading />) : null}
 
 <div className="col-md-12 mt-5 mx-auto">

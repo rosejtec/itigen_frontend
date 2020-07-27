@@ -279,6 +279,7 @@ for(var i = 0; i<loopvar; i++ ) {
       events[i] = event;
 }
 
+var check=false;
 //Have a check for overlap in timings
 console.log("checking timings"); 
 for(var i = 0; i<events.length ; i++){
@@ -291,41 +292,46 @@ for(var i = 0; i<events.length ; i++){
   console.log(intime-outtime);
   if(intime-outtime > 0){
     console.log("error");
+    check = true;
     this.setState({flag: true});
   }
   else if(i!=0){
     if(lasttime-intime > 0){
+      check= true;
       console.log("error");
       this.setState({flag: true});
     }
-  } else {
+  } 
+}
 
+
+if(check===false) {
     console.log(events);
-   console.log("Loop ends");
-const batch = gapi.client.newBatch();
-events.map((r, j) => {
-  batch.add(gapi.client.calendar.events.insert({
+    console.log("Loop ends");
+    const batch = gapi.client.newBatch();
+    events.map((r, j) => {
+    batch.add(gapi.client.calendar.events.insert({
     'calendarId': 'primary',
     'resource': events[j]
-  }))
+    }))
 
   
-batch.then(function(){
+  batch.then(function(){
   console.log('all jobs now dynamically done!!!')
-});
+  });
 
-var e=events[0];
-batch.execute();
-})
-  }
-}
-
-
-
-})
-
+  var e=events[0];
+  batch.execute();
 })
 }
+  
+
+
+})
+
+})
+}
+
 
 loadPDF(){
 
@@ -339,34 +345,41 @@ loadPDF(){
     console.log(event[i]);
   }
 
+
+
   for(var i = 0; i< event.length ; i++){
     var intime = Date.parse(event[i][1]);
     var outtime= Date.parse(event[i][2]);
     var lasttime="";
+    var check=false;  
     if(i!=0){lasttime = Date.parse(event[i-1][2])}
     console.log(intime);
     console.log(outtime);
     console.log(intime-outtime);
+    
     if(intime-outtime > 0){
       console.log("error");
+      check=true;
       this.setState({flag: true});
     }
     else if(i!=0){
       if(lasttime-intime > 0){
+        check= true;
         console.log("error");
         this.setState({flag: true});
       }
-    } else {
-  console.log(event);
+    } 
+  }
 
-  doc.autoTable({
-    head: [['Places (Optimal Order)', 'In Time	', 'Out Time']],
-    body: event,
-  })
+  if (check === false){
+    console.log(event);
   
-  doc.save('table.pdf')
-}
-
+    doc.autoTable({
+      head: [['Places (Optimal Order)', 'In Time	', 'Out Time']],
+      body: event,
+    })
+    
+    doc.save('table.pdf')
   }
   
 }
